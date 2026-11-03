@@ -5,6 +5,7 @@ Ultrasonic distance sensor
 // Define the Trig and Echo pin connections
 const int trigPin = 9;
 const int echoPin = 10;
+const int buzzerPin = 2;
 
 // Define variables to store duration and distance
 long duration; // for potentially large number
@@ -17,7 +18,7 @@ void setup() {
   // Define the Trig and Echo pins as Output and Input
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
-
+  pinMode(buzzerPin, OUTPUT);
 }
 
 void loop() {
@@ -40,11 +41,16 @@ void loop() {
   // Calculating the distance
   distance = duration * 0.034 / 2; // Speed of sound wave divided by 2 (go and back)
 
+  if (distance < 30) {
+    digitalWrite(buzzerPin, HIGH);
+  } else {
+    digitalWrite(buzzerPin, LOW);
+  }
+  
   // Displays the distance on the Serial Monitor
   Serial.print("Distance: ");
   Serial.print(distance);
   Serial.println(" cm");
-
   // Delay 500 milliseconds before next measurement
   delay(500);
 }

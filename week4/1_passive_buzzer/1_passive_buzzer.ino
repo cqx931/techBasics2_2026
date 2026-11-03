@@ -19,7 +19,7 @@ void loop() {
   }
 
   input = Serial.parseInt();
-  Serial.read(); // to avoid extra 0
+  // Serial.read(); // comment out to avoid extra 0
   Serial.println(input);
 
   tone(buzzer_pin, input, 500);
