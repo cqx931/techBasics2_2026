@@ -31,7 +31,13 @@ void setup()
 }
 
 void loop() {
-  stepper.run();
+
+  if (digitalRead(2) == 0) {
+    stepper.run(); // you need this line to see the stepper running
+  } else {
+    stepper.stop();
+  }
+
   ////////////////////////////////
   // now the stepper is moving, //
   // let's do some other stuff! //
