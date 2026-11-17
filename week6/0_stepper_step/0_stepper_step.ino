@@ -9,7 +9,8 @@ Example Code to make a stepper motor step
 CheapStepper stepper (8,9,10,11); 
 
 
-const int stepsPerRevolution = 1024;
+const int stepsPerRevolution = 1024; // 360
+
 // This number defines how many steps are needed per one revolution (round)
 // by default the value is 4096, the stepper motor in Miuzei needs 1024.
 // If you are switching to another stepper motor, always check this value

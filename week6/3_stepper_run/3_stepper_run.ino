@@ -31,7 +31,7 @@ void setup()
 }
 
 void loop() {
-  
+  stepper.run();
   ////////////////////////////////
   // now the stepper is moving, //
   // let's do some other stuff! //
