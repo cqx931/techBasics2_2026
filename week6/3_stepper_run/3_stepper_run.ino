@@ -18,16 +18,8 @@ const int stepsPerRevolution = 1024;
 bool moveClockwise = true;
 int stepsLeft = 0; // how many steps are left from the current movement
 
-const int touchSensorPin = 2;
-const int greenLEDPin = 3;
-const int redLEDPin = 4;
-
-int touchSensorValue = 0;
-
 void setup()
 {
-  pinMode(redLEDPin, OUTPUT);
-  pinMode(greenLEDPin, OUTPUT);
 
   // Start serial
   Serial.begin(9600);
@@ -40,27 +32,6 @@ void setup()
 
 void loop() {
   
-  touchSensorValue = digitalRead(touchSensorPin);
-
-  if (touchSensorValue == 0) {
-    stepper.run();
-    
-    if (moveClockwise) { // clockwise
-      digitalWrite(greenLEDPin, HIGH);
-      digitalWrite(redLEDPin, LOW);
-    } else { // counter clockwise
-      digitalWrite(redLEDPin, HIGH);
-      digitalWrite(greenLEDPin, LOW);
-    }
-
-  } else {
-    stepper.stop();
-    digitalWrite(redLEDPin, LOW);
-    digitalWrite(greenLEDPin, LOW);
-  }
-
-  Serial.println(touchSensorValue);
-
   ////////////////////////////////
   // now the stepper is moving, //
   // let's do some other stuff! //
