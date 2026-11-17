@@ -11,6 +11,7 @@ CheapStepper stepper (8,9,10,11);
 
 // This number defines how many steps are needed per one revolution
 const int stepsPerRevolution = 1024;
+boolean moveCW = true;
 
 void setup()
 {
@@ -21,14 +22,17 @@ void setup()
   stepper.setTotalSteps(stepsPerRevolution); 
   stepper.moveTo(true, 0); // set to step 0
 }
+
 void loop() {
-  stepper.moveTo(true, stepsPerRevolution/4);  // Position: 90 degree
+  stepper.moveTo(moveCW, stepsPerRevolution/4);  // Position: 90 degree
   Serial.println(stepper.getStep()); 
   delay(1000);
-  stepper.moveTo(true, stepsPerRevolution/2);  // Position: 180 degree
+  stepper.moveTo(moveCW, stepsPerRevolution/2);  // Position: 180 degree
   Serial.println(stepper.getStep()); 
   delay(1000);
-  stepper.moveTo(true, stepsPerRevolution/4*3); // Position: 270 degree
+  stepper.moveTo(moveCW, stepsPerRevolution/4*3); // Position: 270 degree
   Serial.println(stepper.getStep()); 
   delay(1000);
+  // not
+  moveCW = !moveCW; 
 }

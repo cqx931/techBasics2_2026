@@ -37,10 +37,10 @@ void loop() {
   // Ask the stepper motor to move one full round
   // pay attention that this is a block function
   // meaning it won't go to the next line until it finishes the movement
-  stepper.moveDegrees (moveClockwise, 6);
+  stepper.moveDegrees (moveClockwise, 360);
   // use this line to observe the current step
   Serial.println(stepper.getStep()); 
   // wait
-  delay(900); // 1s
+  delay(1000); // 1s
 }
 
